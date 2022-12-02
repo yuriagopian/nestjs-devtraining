@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Param, Post, HttpStatus } from '@nestjs/common';
 
 @Controller('courses')
 export class CoursesController {
@@ -14,6 +14,15 @@ export class CoursesController {
 
     @Post()
     create(@Body() data) {
+        return data
+    }
+
+    // desestrutura/limita a resposta por um parametro que é deifinido no decorator body
+    @Post('name')
+    // @HttpCode(204)
+    //ou
+    @HttpCode(HttpStatus.NO_CONTENT) // Enum com todos os status code definidos no http
+    createName(@Body('name') data) {
         return data
     }
 }
