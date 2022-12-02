@@ -1,10 +1,12 @@
-import { Body, Controller, Get, HttpCode, Param, Post, HttpStatus } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Param, Post, HttpStatus, Res } from '@nestjs/common';
 
 @Controller('courses')
 export class CoursesController {
+
+    // tratando status code em caso de sucesso
     @Get()
-    findAll() {
-        return 'Listagem de cursos';
+    findAll(@Res() response) {
+        return response.status(200).send('Listagem de cursos')
     }
 
     @Get(':id')
@@ -21,7 +23,8 @@ export class CoursesController {
     @Post('name')
     // @HttpCode(204)
     //ou
-    @HttpCode(HttpStatus.NO_CONTENT) // Enum com todos os status code definidos no http
+    // Enum com todos os status code definidos no http util quando o status code é estatico
+    @HttpCode(HttpStatus.NO_CONTENT)
     createName(@Body('name') data) {
         return data
     }
