@@ -8,7 +8,7 @@ export class CoursesController {
     }
 
     @Get(':id')
-    findOne(@Param() id: string) {
-        return id;
+    findOne(@Param() params) {
+        return `Curso #${params.id}`;
     }
 }
