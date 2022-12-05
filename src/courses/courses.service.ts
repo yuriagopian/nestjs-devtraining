@@ -30,11 +30,11 @@ export class CoursesService {
 
     update(id: string, data) {
         const indexCourse = this.courses.findIndex(c => c.id === Number(id));
-        if (indexCourse) {
+        if (indexCourse >= 0) {
             this.courses[indexCourse] = data
             return
         }
-        throw new HttpException('Course not found', HttpStatus.NOT_FOUND)
+        throw new HttpException('Course not found!', HttpStatus.NOT_FOUND)
     }
 
     delete(id: string) {
