@@ -1,6 +1,10 @@
-import { IsNumber, IsString, } from "class-validator";
+import { IsNumber, IsOptional, IsString, } from "class-validator";
 
 export class CreateCourseDto {
+    @IsNumber()
+    @IsOptional()
+    readonly id: number;
+
     @IsString()
     readonly name: string;
 
