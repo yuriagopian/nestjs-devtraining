@@ -1,3 +1,4 @@
+import { CreateCourseDto } from './dto/create-course.dto';
 import { HttpException, Injectable, HttpStatus } from '@nestjs/common';
 import { Course } from './entities/course.entity';
 
@@ -23,7 +24,7 @@ export class CoursesService {
         }
     }
 
-    create(createCourseDTO: Course) {
+    create(createCourseDTO: CreateCourseDto) {
         return this.courses.push(createCourseDTO);
     }
 

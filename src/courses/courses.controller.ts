@@ -1,3 +1,5 @@
+import { UpdateCourseDto } from './dto/update-course.dto';
+import { CreateCourseDto } from './dto/create-course.dto';
 import { CoursesService } from './courses.service';
 import { Body, Controller, Get, HttpCode, Param, Post, HttpStatus, Res, Patch, Delete } from '@nestjs/common';
 
@@ -18,8 +20,8 @@ export class CoursesController {
     }
 
     @Post()
-    create(@Body() data) {
-        return this.coursesService.create(data)
+    create(@Body() createCourseDto: CreateCourseDto) {
+        return this.coursesService.create(createCourseDto)
     }
 
     // desestrutura/limita a resposta por um parametro que é deifinido no decorator body
@@ -33,8 +35,8 @@ export class CoursesController {
     }
 
     @Patch(':id')
-    update(@Param('id') id: string, @Body() data) {
-        return this.coursesService.update(id, data)
+    update(@Param('id') id: string, @Body() updateCourseDTO: UpdateCourseDto) {
+        return this.coursesService.update(id, updateCourseDTO)
     }
 
     @Delete(':id')
